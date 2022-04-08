@@ -29,3 +29,14 @@ setInterval(function () {
     backgroundChange();
 }, 1000);
 
+// saves each text area when the save button is clicked
+$(".saveBtn").on("click", function (event){
+    var textAreaFilling =$(`#${event.target.previousElementSibling.id}`).val();
+    localStorage.setItem(`${event.target.id}text`, textAreaFilling);
+    console.log("saved")
+});
+// loads each text area from local storage on load
+for (var i = 9; i <=17; i++){
+    var textAreaTarget = $(`#${i}`);
+    textAreaTarget.text(localStorage.getItem(`btn${i}text`));
+}
